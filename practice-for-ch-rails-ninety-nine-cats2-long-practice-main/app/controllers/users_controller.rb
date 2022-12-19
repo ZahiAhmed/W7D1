@@ -5,17 +5,16 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.find_by(user_params)
+        @user = User.new(user_params)
         if @user.save
             redirect_to user_url(@user)
         else
-            render json: @user.errors.full_messages, status: 422
+            redirect_to new_user_url
         end
     end
 
-    def show
-        @user = User.find_by(user_params)
-        render json: @user
+    private
+    def user_params
+        params.require(:user).permit(:username, :password)
     end
-
 end
