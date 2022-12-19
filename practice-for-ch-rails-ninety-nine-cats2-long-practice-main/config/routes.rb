@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create, :show]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :session, only: [:new, :create, :destroy]
 
 end
